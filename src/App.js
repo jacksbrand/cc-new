@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import HomePage from './pages/homepage/homepage-component';
 import ShopPage from './pages/shop/shop.component';
@@ -17,18 +17,29 @@ class App extends Component {
     };
   }
 
-  unsucscribeFromAuthAPPLES = null;
+  unsucscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsucscribeFromAuthAPPLES = auth.onAuthStateChanged((user) => {
-      this.setState({ currentUser: user });
+    this.unsucscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
 
-      console.log(user);
+        userRef.onSnapshot((snapShot) => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            },
+          });
+        });
+      } else {
+        this.setState({ currentUser: userAuth });
+      }
     });
   }
 
   componentWillUnmount() {
-    this.unsucscribeFromAuthAPPLES();
+    this.unsucscribeFromAuth();
   }
 
   render() {
