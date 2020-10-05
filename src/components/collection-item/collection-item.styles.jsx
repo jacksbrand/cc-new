@@ -36,7 +36,7 @@ export const CustomButtonStyled = styled(CustomButton)`
 `;
 
 export const CollectionFooterStyled = styled.div`
-  width: 90%;
+  width: 97%;
   height: 5%;
   display: flex;
   justify-content: space-between;

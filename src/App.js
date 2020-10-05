@@ -58,7 +58,7 @@ class App extends Component {
               )
             }
           />{' '}
-          <Route exact path='/checkout' component={CheckoutPage} />
+          <Route exact path='/checkout' component={CheckoutPage} />{' '}
         </Switch>{' '}
       </div>
     );
