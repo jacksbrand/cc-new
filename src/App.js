@@ -13,7 +13,6 @@ import CheckoutPage from './pages/checkout/checkout.component';
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selector';
-
 class App extends Component {
   unsucscribeFromAuth = null;
 
@@ -46,19 +45,19 @@ class App extends Component {
         <Header />{' '}
         {/*By having header outside the switch below, it will always render, regardless of which page the switch renders */}{' '}
         <Switch>
-          <Route exact path='/' component={HomePage} />{' '}
-          <Route path='/shop' component={ShopPage} />{' '}
+          <Route exact path="/" component={HomePage} />{' '}
+          <Route path="/shop" component={ShopPage} />{' '}
           <Route
-            path='/signin'
+            path="/signin"
             render={() =>
               this.props.currentUser ? (
-                <Redirect to='/' />
+                <Redirect to="/" />
               ) : (
                 <SignInAndSignUpPage />
               )
             }
           />{' '}
-          <Route exact path='/checkout' component={CheckoutPage} />{' '}
+          <Route exact path="/checkout" component={CheckoutPage} />{' '}
         </Switch>{' '}
       </div>
     );
