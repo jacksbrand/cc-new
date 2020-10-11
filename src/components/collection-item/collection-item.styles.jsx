@@ -23,13 +23,13 @@ export const ImageStyled = styled.div`
 `;
 
 export const CustomButtonStyled = styled(CustomButton)`
+  display: none;
+  position: absolute;
   width: 80%;
   opacity: 0.7;
-  position: absolute;
   top: 255px;
-  display: none;
 
-  &:hover {
+  ${CollectionItemStyled}:hover & {
     display: flex;
     opacity: 0.85;
   }
