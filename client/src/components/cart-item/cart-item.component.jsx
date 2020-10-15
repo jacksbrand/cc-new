@@ -9,14 +9,14 @@ import {
 
 const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
   <CartItemStyled>
-    <ImageStyled src={imageUrl} alt='item' />
+    <ImageStyled src={imageUrl} alt="item" />
     <ItemDetailsStyled>
       <NameStyled>{name}</NameStyled>
-      <span className='price'>
+      <span className="price">
         {quantity} * £{price}
       </span>
     </ItemDetailsStyled>
   </CartItemStyled>
 );
 
-export default CartItem;
+export default React.memo(CartItem);
