@@ -8,6 +8,11 @@ export const CollectionItemStyled = styled.div`
   height: 350px;
   align-items: center;
   position: relative;
+  padding: 5px;
+
+  @media screen and (max-width: 1000px) {
+    width: 25vw;
+  }
 
   @media screen and (max-width: 800px) {
     width: 40vw;
